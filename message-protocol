@@ -1,3 +1,5 @@
+// message protocol
+
 { "type": "register", "deviceId": "win-laptop" }
  { "type": "pair", "targetDeviceId": "android-phone" } {
   "type": "signal",
@@ -6,4 +8,45 @@
 }    {
   "type": "clipboard-request",
   "to": "android-phone"
-}  these are message protocol
+}
+
+// [Laptop] → register
+// [Phone]  → register
+
+// [Laptop] → pair → server → phone
+
+// [Laptop] → signal (SDP)
+// [Phone]  → signal (answer)
+// ↳ WebRTC channel established
+
+// [Laptop] → clipboard-request
+// [Phone]  → clipboard-data
+
+// Clipboard synced 
+
+
+
+// [App Starts]
+//     ↓
+// Register with signaling server
+//     ↓
+// Pair with devices
+//     ↓
+// Establish WebRTC connections
+//     ↓
+// Listen for clipboard events
+//     ↓
+// Clipboard changed?
+//     ├─ Yes → Send via DataChannel
+//     └─ No → Wait
+
+
+// if incoming.timestamp > local.timestamp:
+//     applyClipboard(incoming)
+
+
+// if peerOffline:
+//     queue clipboard update locally
+
+// onPeerReconnect:
+//     replay queue
