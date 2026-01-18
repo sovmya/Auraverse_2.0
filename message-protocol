@@ -1,0 +1,9 @@
+{ "type": "register", "deviceId": "win-laptop" }
+ { "type": "pair", "targetDeviceId": "android-phone" } {
+  "type": "signal",
+  "to": "android-phone",
+  "payload": { "sdp": "...", "ice": "..." }
+}    {
+  "type": "clipboard-request",
+  "to": "android-phone"
+}  these are message protocol
